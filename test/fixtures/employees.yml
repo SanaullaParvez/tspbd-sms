@@ -1,0 +1,99 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  employee_category: 
+  employee_number: MyString
+  joining_date: 2014-01-30
+  first_name: MyString
+  middle_name: MyString
+  last_name: MyString
+  gender: false
+  job_title: MyString
+  employee_position: 
+  employee_department: 
+  reporting_manager: 
+  employee_grade: 
+  qualification: MyString
+  experience_detail: MyText
+  experience_year: 
+  experience_month: 
+  status: false
+  status_description: MyString
+  date_of_birth: 2014-01-30
+  marital_status: MyString
+  children_count: 
+  father_name: MyString
+  mother_name: MyString
+  husband_name: MyString
+  blood_group: MyString
+  nationality: 
+  home_address_line_1: MyString
+  home_address_line2: MyString
+  home_city: MyString
+  home_state: MyString
+  home_country: 
+  home_pin_code: MyString
+  office_address_line1: MyString
+  office_address_line2: MyString
+  office_city: 
+  office_state: MyString
+  office_country: 
+  office_pin_code: MyString
+  office_phone1: MyString
+  office_phone2: MyString
+  mobile_phone: MyString
+  home_phone: MyString
+  home_phone: 
+  email: MyString
+  fax: MyString
+  user: 
+  photo: 
+
+two:
+  employee_category: 
+  employee_number: MyString
+  joining_date: 2014-01-30
+  first_name: MyString
+  middle_name: MyString
+  last_name: MyString
+  gender: false
+  job_title: MyString
+  employee_position: 
+  employee_department: 
+  reporting_manager: 
+  employee_grade: 
+  qualification: MyString
+  experience_detail: MyText
+  experience_year: 
+  experience_month: 
+  status: false
+  status_description: MyString
+  date_of_birth: 2014-01-30
+  marital_status: MyString
+  children_count: 
+  father_name: MyString
+  mother_name: MyString
+  husband_name: MyString
+  blood_group: MyString
+  nationality: 
+  home_address_line_1: MyString
+  home_address_line2: MyString
+  home_city: MyString
+  home_state: MyString
+  home_country: 
+  home_pin_code: MyString
+  office_address_line1: MyString
+  office_address_line2: MyString
+  office_city: 
+  office_state: MyString
+  office_country: 
+  office_pin_code: MyString
+  office_phone1: MyString
+  office_phone2: MyString
+  mobile_phone: MyString
+  home_phone: MyString
+  home_phone: 
+  email: MyString
+  fax: MyString
+  user: 
+  photo: 

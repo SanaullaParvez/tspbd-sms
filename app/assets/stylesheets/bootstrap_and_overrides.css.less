@@ -1,0 +1,233 @@
+@import "twitter/bootstrap/bootstrap";
+@import "twitter/bootstrap/responsive";
+
+// Set the correct sprite paths
+@iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");
+@iconWhiteSpritePath: image-url("twitter/bootstrap/glyphicons-halflings-white.png");
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+@fontAwesomeEotPath: asset-url("fontawesome-webfont.eot");
+@fontAwesomeEotPath_iefix: asset-url("fontawesome-webfont.eot?#iefix");
+@fontAwesomeWoffPath: asset-url("fontawesome-webfont.woff");
+@fontAwesomeTtfPath: asset-url("fontawesome-webfont.ttf");
+@fontAwesomeSvgPath: asset-url("fontawesome-webfont.svg#fontawesomeregular");
+
+// Font Awesome
+@import "fontawesome/font-awesome";
+
+// Glyphicons
+//@import "twitter/bootstrap/sprites.less";
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
+//
+// Example:
+// @linkColor: #ff0000;
+
+
+
+
+
+
+/* Sticky footer styles
+     -------------------------------------------------- */
+
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  margin-top: 20px;
+  margin-bottom: -90px;
+}
+.navbar .nav > li > a {
+  font-weight: bold;
+//  text-align: center;
+  border-left: 1px solid rgba(255,255,255,.75);
+  border-right: 1px solid rgba(0,0,0,.1);
+}
+.navbar .nav li:first-child a {
+  border-left: 0;
+}
+.navbar .nav li:first-child a {
+  border-left: 0;
+}
+.navbar .nav {
+  &:first-child {
+    &>li:first-child {
+      &>a {
+        text-decoration: none;
+        text-shadow: 0 1px 0 #ffffff;
+        font-size: 20px;
+        font-weight: 200;
+      }
+    }
+  }
+}
+.navbar-inner {
+  &>.container {
+    //    padding-top: 60px;
+    .brand {
+      &:hover {
+        color: #333333;
+        background-color: transparent;
+        text-decoration: none;
+      }
+
+    }
+  }
+}
+
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  padding-top:20px;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by it's height */
+  margin: 0 auto -60px;
+  &>.container {
+//    padding-top: 60px;
+    .brand {
+      &:hover {
+        color: #333333;
+        background-color: transparent;
+        text-decoration: none;
+      }
+
+    }
+  }
+
+}
+div.sub-heading {
+  display: block;
+  font-weight: bold;
+  font-size: 17.5px;
+  padding-top: 10px;
+}
+hr.sub-heading {
+  background: #9E0F15;
+  height: 1px;
+  border: none;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  clear: both;
+}
+.form-horizontal {
+  .control-label {
+    text-align: left;
+  }
+}
+.profile_top_banner {
+  position: absolute;
+  float: right;
+  padding-left: 447px;
+  margin-top: -10px;
+  span.profile {
+    -moz-transform: rotate(37deg);  /* FF3.5+ */
+    -o-transform: rotate(37deg);  /* Opera 10.5 */
+    -webkit-transform: rotate(37deg);  /* Saf3.1+, Chrome */
+    -ms-transform: rotate(37deg);  /* IE9 */
+    transform: rotate(37deg);
+    background: transparent/9;
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)"; /* IE8 $ IE9*/
+    zoom: 1;
+    color: #FFFFFF;
+    font-size: 21px;
+    position: absolute;
+    font-weight: 200;
+    /*padding-left: 95px;
+    padding-top: 11px;*/
+    width: 128px;
+    padding-top: 27px;
+    text-align: center;
+    height: 250px
+  }
+}
+
+.tspbd-table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border: 0px none;
+  tbody {
+    &>tr {
+      &:first-child {
+        border-top: 0px;
+      }
+      &:nth-child(odd) {
+        &>td {
+          background-color: #eff3fe;
+        }
+      }
+      &:nth-child(even) {
+        &>td {
+          background-color: #dae6ff;
+        }
+      }
+      td {
+        font-weight: bold;
+        border-top: 1px solid #bdcfff;
+        border-bottom: 1px solid #bdcfff;
+        padding: 10px 10px 10px 10px;
+
+        &:first-child {
+          width: 30%;
+          color: #548ab2;
+          text-align: right;
+        }
+        &:last-child {
+          width: 70%;
+          color: #000000;
+          text-align: left;
+        }
+      }
+      &:hover{
+        &>td {
+          background-color: #f5f5f5;
+        }
+      }
+    }
+  }
+}
+
+
+/* Set the fixed height of the footer here */
+#push,
+#footer {
+  height: 60px;
+}
+#footer {
+  background-color: #f5f5f5;
+  .text-muted {
+    margin: 20px auto;
+  }
+}
+
+/* Lastly, apply responsive CSS fixes as necessary */
+@media (max-width: 767px) {
+  #footer {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (min-width: 1200px){
+  .container {
+    width: 1170px;
+  }
+}

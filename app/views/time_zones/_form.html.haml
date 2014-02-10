@@ -1,0 +1,22 @@
+= form_for @time_zone do |f|
+  - if @time_zone.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@time_zone.errors.count, "error")} prohibited this time_zone from being saved:"
+      %ul
+        - @time_zone.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :code
+    = f.text_field :code
+  .field
+    = f.label :difference_type
+    = f.text_field :difference_type
+  .field
+    = f.label :time_difference
+    = f.number_field :time_difference
+  .actions
+    = f.submit 'Save'

@@ -1,0 +1,21 @@
+- model_class = EmployeeDepartment
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.titleize
+
+%p
+  %strong= model_class.human_attribute_name(:code) + ':'
+  %br
+  = @employee_department.code
+%p
+  %strong= model_class.human_attribute_name(:name) + ':'
+  %br
+  = @employee_department.name
+%p
+  %strong= model_class.human_attribute_name(:status) + ':'
+  %br
+  = @employee_department.status
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), employee_departments_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_employee_department_path(@employee_department), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), employee_department_path(@employee_department), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

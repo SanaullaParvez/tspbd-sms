@@ -1,0 +1,25 @@
+%h1 Listing time_zones
+
+%table
+  %tr
+    %th Name
+    %th Code
+    %th Difference type
+    %th Time difference
+    %th
+    %th
+    %th
+
+  - @time_zones.each do |time_zone|
+    %tr
+      %td= time_zone.name
+      %td= time_zone.code
+      %td= time_zone.difference_type
+      %td= time_zone.time_difference
+      %td= link_to 'Show', time_zone
+      %td= link_to 'Edit', edit_time_zone_path(time_zone)
+      %td= link_to 'Destroy', time_zone, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Time zone', new_time_zone_path

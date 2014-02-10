@@ -1,0 +1,75 @@
+- model_class = Student
+.page-header
+  = image_tag("/assets/student_details_logo.jpg")
+  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:admission_no)
+      %th= model_class.human_attribute_name(:class_roll_no)
+      %th= model_class.human_attribute_name(:admission_date)
+      %th= model_class.human_attribute_name(:first_name)
+      %th= model_class.human_attribute_name(:middle_name)
+      %th= model_class.human_attribute_name(:last_name)
+      %th= model_class.human_attribute_name(:batch_id)
+      %th= model_class.human_attribute_name(:date_of_birth)
+      %th= model_class.human_attribute_name(:gender)
+      %th= model_class.human_attribute_name(:blood_group)
+      %th= model_class.human_attribute_name(:birth_place)
+      %th= model_class.human_attribute_name(:nationality_id)
+      %th= model_class.human_attribute_name(:language)
+      %th= model_class.human_attribute_name(:religion)
+      %th= model_class.human_attribute_name(:student_category_id)
+      %th= model_class.human_attribute_name(:address_line1)
+      %th= model_class.human_attribute_name(:address_line2)
+      %th= model_class.human_attribute_name(:city)
+      %th= model_class.human_attribute_name(:state)
+      %th= model_class.human_attribute_name(:pin_code)
+      %th= model_class.human_attribute_name(:country_id)
+      %th= model_class.human_attribute_name(:phone1)
+      %th= model_class.human_attribute_name(:phone2)
+      %th= model_class.human_attribute_name(:email)
+      %th= model_class.human_attribute_name(:immediate_contact_id)
+      %th= model_class.human_attribute_name(:is_sms_enabled)
+      %th= model_class.human_attribute_name(:status_description)
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @students.each do |student|
+      %tr
+        %td= link_to student.id, student_path(student)
+        %td= student.admission_no
+        %td= student.class_roll_no
+        %td= student.admission_date
+        %td= student.first_name
+        %td= student.middle_name
+        %td= student.last_name
+        %td= student.batch_id
+        %td= student.date_of_birth
+        %td= student.gender
+        %td= student.blood_group
+        %td= student.birth_place
+        %td= student.nationality_id
+        %td= student.language
+        %td= student.religion
+        %td= student.student_category_id
+        %td= student.address_line1
+        %td= student.address_line2
+        %td= student.city
+        %td= student.state
+        %td= student.pin_code
+        %td= student.country_id
+        %td= student.phone1
+        %td= student.phone2
+        %td= student.email
+        %td= student.immediate_contact_id
+        %td= student.is_sms_enabled
+        %td= student.status_description
+        %td
+          - if can? :update, student
+            = link_to t('.edit', :default => t("helpers.links.edit")), edit_student_path(student), :class => 'btn btn-mini'
+          - if can? :destroy, student
+            = link_to t('.destroy', :default => t("helpers.links.destroy")), student_path(student), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+
+- if can? :create, Student
+  = link_to t('.new', :default => t("helpers.links.new")), new_student_path, :class => 'btn btn-primary'

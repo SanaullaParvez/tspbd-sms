@@ -1,0 +1,27 @@
+- model_class = EmployeeGrade
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:name)
+      %th= model_class.human_attribute_name(:priority)
+      %th= model_class.human_attribute_name(:status)
+      %th= model_class.human_attribute_name(:max_hours_day)
+      %th= model_class.human_attribute_name(:max_hours_week)
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @employee_grades.each do |employee_grade|
+      %tr
+        %td= link_to employee_grade.id, employee_grade_path(employee_grade)
+        %td= employee_grade.name
+        %td= employee_grade.priority
+        %td= employee_grade.status
+        %td= employee_grade.max_hours_day
+        %td= employee_grade.max_hours_week
+        %td
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_employee_grade_path(employee_grade), :class => 'btn btn-mini'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), employee_grade_path(employee_grade), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+
+= link_to t('.new', :default => t("helpers.links.new")), new_employee_grade_path, :class => 'btn btn-primary'

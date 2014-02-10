@@ -1,0 +1,131 @@
+- model_class = MyConfiguration
+.page-header
+  = image_tag("/assets/show_settings.png")
+  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+  %h3= 'General Settings'
+
+-#%table.table.table-striped
+-#  %thead
+-#    %tr
+-#      %th= model_class.human_attribute_name(:id)
+-#      %th= model_class.human_attribute_name(:config_key)
+-#      %th= model_class.human_attribute_name(:config_value)
+-#      %th=t '.actions', :default => t("helpers.actions")
+-#  %tbody
+-#    - @my_configurations.each do |my_configuration|
+-#      %tr
+-#        %td= link_to my_configuration.id, my_configuration_path(my_configuration)
+-#        %td= my_configuration.config_key
+-#        %td= my_configuration.config_value
+-#        %td
+-#          = link_to t('.edit', :default => t("helpers.links.edit")), edit_my_configuration_path(my_configuration), :class => 'btn btn-mini'
+-#          = link_to t('.destroy', :default => t("helpers.links.destroy")), my_configuration_path(my_configuration), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+-#
+-#= link_to t('.new', :default => t("helpers.links.new")), new_my_configuration_path, :class => 'btn btn-primary'
+
+
+-#- unless flash[:notice].nil?
+-#  %p.flash-msg
+-#    = flash[:notice]
+-#= tspbd_error_messages! @school_detail
+.row
+  .span12
+    .row
+      .span2
+        = image_tag @school_detail.logo.url(:original), :class => 'school_logo'
+      .span4
+        %h3
+          %strong= @config[:institution_name]
+        %h5.color-red
+          \ Address : #{@config[:institution_address]}
+          %br Phone : #{@config[:institution_phone_no]}
+      .span1
+%br/
+.row
+  .span12
+    = form_for(:my_configuration,:html=> {:multipart=>true, :class => 'form-horizontal'}) do |c|
+
+      .control-group
+        = c.label :institution_name, t('school_college_name'), :class => 'control-label'
+        .controls
+          = text_field :my_configuration, :institution_name, :value => @config[:institution_name]
+      .control-group
+        = c.label :institution_address, t('school_college_address'), :class => 'control-label'
+        .controls
+          = text_field :my_configuration, :institution_address, :value => @config[:institution_address]
+      .control-group
+        = c.label :institution_phone_no, t('school_college_phone'), :class => 'control-label'
+        .controls
+          = text_field :my_configuration, :institution_phone_no, :value => @config[:institution_phone_no]
+      .control-group
+        = c.label :student_attendance_type, t('student_attendance_type'), :class => 'control-label'
+        .controls
+          = select :my_configuration, :student_attendance_type, [%W(#{t('daily_text')} Daily), %W(#{t('subject_wise_text')} SubjectWise)],
+            :selected => @config[:student_attendance_type]
+      .control-group
+        = c.label :financial_year_start_date, t('finance_year_start_date'), :class => 'control-label'
+        .controls
+          = text_field :my_configuration, :financial_year_start_date, :class => 'date_select', :value => @config[:financial_year_start_date], :readonly=>true
+      .control-group
+        = c.label :financial_year_end_date, t('finance_year_end_date'), :class => 'control-label'
+        .controls
+          = text_field :my_configuration, :financial_year_end_date, :class => 'date_select', :value => @config[:financial_year_end_date], :readonly=>true
+      .control-group
+        = c.label :locale, t('language'), :class => 'control-label'
+        .controls
+          = select :my_configuration, :locale, available_language_options, :selected => @config[:locale]
+      .control-group
+        = c.label :time_zone, t('time_zone'), :class => 'control-label'
+        .controls
+          = select :my_configuration, :time_zone, @time_zones.map{|t| ["#{t.name}(#{t.code}) - GMT#{t.difference_type}#{Time.at(t.time_difference).gmtime.strftime('%R')}",t.id]},:selected =>@config[:time_zone].to_i
+      .control-group
+        = c.label :default_country, t('country'), :class => 'control-label'
+        .controls
+          - selected_value = @config[:default_country].present? ? @config[:default_country].to_i : '76'
+          = select :my_configuration, :default_country, @countries.map {|c| [c.name, c.id]}, :selected=> selected_value.to_i
+      .control-group
+        = c.label :currency_type, t('currency_type'), :class => 'control-label'
+        .controls
+          = text_field :my_configuration, :currency_type, :value => @config[:currency_type]
+      .control-group
+        = label :school_detail,:logo, t('upload_logo'), :class => 'control-label'
+        .controls
+          = file_field :school_detail,:logo
+      .control-group
+        = c.label :network_state, t('network_state'), :class => 'control-label'
+        .controls
+          = select :my_configuration, :network_state, [%W(#{t('online')} Online),%W(#{t('offline')} Offline)],:selected =>@config[:network_state]
+      .control-group
+        = c.label "configuration_grading_systems", t('include_grading_systems'), :class => 'control-label'
+        .controls.grading-system-box
+          = t('select')+':'
+          = link_to_function t('all')+',', "$('input.batches_box').each(function(){ this.checked = true; });"
+          = link_to_function t('none'), "$('input.batches_box').each(function(){ this.checked = false; });"
+          - @grading_types.each do |key,val|
+            .each_batch
+              = check_box :my_configuration, val.underscore , :checked => (@enabled_grading_types.include? key),:class=>'batches_box'
+              = c.label val.underscore, val, :class => 'checkbox inline'
+      .control-group
+        - if @config[:admission_number_auto_increment] == '1'
+          = check_box :my_configuration, :admission_number_auto_increment, :checked => true
+          = c.label :admission_number_auto_increment, t('student_admission_auto'), :class => 'checkbox inline'
+        - else
+          = check_box :my_configuration, :admission_number_auto_increment, :checked => false
+          = c.label :admission_number_auto_increment, t('student_admission_auto'), :class => 'checkbox inline'
+        %br/
+        - if MyConfiguration.available_modules.include?('HR')
+          - if @config[:employee_number_auto_increment] == '1'
+            = check_box :my_configuration, :employee_number_auto_increment, :checked => true
+            = c.label :employee_number_auto_increment, t('employee_admission_auto'), :class => 'checkbox inline'
+          - else
+            = check_box :my_configuration, :employee_number_auto_increment, :checked => false
+            = c.label :employee_number_auto_increment, t('employee_admission_auto'), :class => 'checkbox inline'
+        %br/
+        - if @config[:enable_news_comment_moderation] == '1'
+          = check_box :my_configuration, :enable_news_comment_moderation, :checked => true
+          = c.label :enable_news_comment_moderation,t('enable_news_comment_moderation'), :class => 'checkbox inline'
+        - else
+          = check_box :my_configuration, :enable_news_comment_moderation, :checked => false
+          = c.label :enable_news_comment_moderation, t('enable_news_comment_moderation'), :class => 'checkbox inline'
+      .form-actions
+        = c.submit "► #{t('update')}", :class => 'btn btn-primary'

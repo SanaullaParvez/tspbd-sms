@@ -1,0 +1,129 @@
+= form_for @student, :html => { :class => 'form-horizontal' } do |f|
+  = tspbd_error_messages! @student
+
+  .control-group
+    = f.label :employee_number, :class => 'control-label'
+    .controls
+      - if @student.new_record?
+        -unless @my_config.config_value == '0' or @last_admitted_student.nil?
+          = f.text_field :admission_no , :value=> @last_admitted_student.admission_no.next, :readonly => true, :class => 'text_field'
+        -else
+          = f.text_field :admission_no, :value => '1', :readonly => true
+  .control-group
+    = f.label :admission_date, :class => 'control-label'
+    .controls
+      = f.text_field :admission_date, :value => Date.today, :class => 'date_select'
+  .control-group
+    .sub-heading
+      = t('personal_details')
+    %hr.sub-heading
+  .control-group
+    = f.label :class_roll_no, :class => 'control-label'
+    .controls
+      = f.text_field :class_roll_no, :class => 'text_field'
+  .control-group
+    = f.label :first_name, :class => 'control-label'
+    .controls
+      = f.text_field :first_name, :class => 'text_field'
+  .control-group
+    = f.label :middle_name, :class => 'control-label'
+    .controls
+      = f.text_field :middle_name, :class => 'text_field'
+  .control-group
+    = f.label :last_name, :class => 'control-label'
+    .controls
+      = f.text_field :last_name, :class => 'text_field'
+  .control-group
+    = f.label :batch_id, :class => 'control-label'
+    .controls
+      = f.number_field :batch_id, :class => 'number_field'
+  .control-group
+    = f.label :date_of_birth, :class => 'control-label'
+    .controls
+      = f.text_field :date_of_birth, :class => 'date_select'
+  .control-group
+    = f.label :gender, :class => 'control-label'
+    .controls
+      = f.label :Male, :class => 'radio inline'
+      = f.radio_button  :gender, 'm', :checked => "checked"
+      = f.label :Female, :class => 'radio inline'
+      = f.radio_button  :gender, 'f'
+  .control-group
+    = f.label :blood_group, :class => 'control-label'
+    .controls
+      = select :student, :blood_group, ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"],{:prompt=> "#{t('unknown')}"}
+  .control-group
+    = f.label :birth_place, :class => 'control-label'
+    .controls
+      = f.text_field :birth_place, :class => 'text_field'
+  .control-group
+    = f.label :nationality_id, :class => 'control-label'
+    .controls
+      = f.select :nationality_id, @nationalities.map { |s| [s.name, s.id] },:selected =>  @student.nationality_id || @selected_value, :class => 'form-control'
+  .control-group
+    = f.label :language, :class => 'control-label'
+    .controls
+      = f.text_field :language, :class => 'text_field'
+  .control-group
+    = f.label :religion, :class => 'control-label'
+    .controls
+      = f.text_field :religion, :class => 'text_field'
+  .control-group
+    = f.label :student_category_id, :class => 'control-label'
+    .controls
+      = f.number_field :student_category_id, :class => 'number_field'
+  .control-group
+    .sub-heading
+      = t('contact_details')
+    %hr.sub-heading
+  .control-group
+    = f.label :address_line1, :class => 'control-label'
+    .controls
+      = f.text_field :address_line1, :class => 'text_field'
+  .control-group
+    = f.label :address_line2, :class => 'control-label'
+    .controls
+      = f.text_field :address_line2, :class => 'text_field'
+  .control-group
+    = f.label :city, :class => 'control-label'
+    .controls
+      = f.text_field :city, :class => 'text_field'
+  .control-group
+    = f.label :state, :class => 'control-label'
+    .controls
+      = f.text_field :state, :class => 'text_field'
+  .control-group
+    = f.label :pin_code, :class => 'control-label'
+    .controls
+      = f.text_field :pin_code, :class => 'text_field'
+  .control-group
+    = f.label :country_id, :class => 'control-label'
+    .controls
+      = f.select :country_id, @country.map { |s| [s.name, s.id] },:selected =>  @student.nationality_id || @selected_value, :class => 'form-control'
+  .control-group
+    = f.label :phone1, :class => 'control-label'
+    .controls
+      = f.text_field :phone1, :class => 'text_field'
+  .control-group
+    = f.label :phone2, :class => 'control-label'
+    .controls
+      = f.text_field :phone2, :class => 'text_field'
+  .control-group
+    = f.label :email, :class => 'control-label'
+    .controls
+      = f.text_field :email, :class => 'text_field'
+  .control-group
+    = f.label :immediate_contact_id, :class => 'control-label'
+    .controls
+      = f.number_field :immediate_contact_id, :class => 'number_field'
+  .control-group
+    = f.label :studnet_photo, :class => 'control-label'
+    .controls
+      = f.file_field :photo, :class => 'text_field'
+  .control-group
+    = f.label :status_description, :class => 'control-label'
+    .controls
+      = f.text_field :status_description, :class => 'text_field'
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), students_path, :class => 'btn'

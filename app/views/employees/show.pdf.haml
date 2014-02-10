@@ -1,0 +1,184 @@
+- model_class = Employee
+.page-header
+  = image_tag("/assets/show_hr.png")
+  %h1=t '.title', :default => model_class.model_name.human.titleize
+  %h3= 'Details'
+-#.sub-page-header
+-#  = image_tag @employee.photo.url(:thumb)
+-#  %h1
+-#    %strong= @employee.full_name
+-#  %h3
+-#    = t('employee_id')
+-#    \: #{@employee.employee_number}
+.row
+  .span3
+  .span8
+    .row
+      .span2
+        = image_tag @employee.photo.url(:thumb), :class => 'employee_image'
+      .span4
+        %h3
+          %strong= @employee.full_name
+        %h5.color-red
+          = t('employee_id')
+          \: #{@employee.employee_number}
+        .span1
+  .span2
+
+.row
+  .span3
+  .span8
+    .profile_top_banner
+      %span.profile= t('details')
+      = image_tag("/assets/topbanner.png")
+    %table.table.table-bordered.table-striped.tspbd-table
+      %caption
+      %tbody
+        %tr
+          %td
+            %strong= model_class.human_attribute_name(:joining_date)
+          %td= @employee.joining_date
+        %tr
+          %td
+            %strong= model_class.human_attribute_name(t('department'))
+          %td= @employee.employee_department.name unless @employee.employee_department.nil?
+        %tr
+          %td
+            %strong= model_class.human_attribute_name(t('category'))
+          %td
+            = @employee.employee_category.name unless @employee.employee_category.nil?
+        %tr
+          %td
+            %strong= model_class.human_attribute_name(t('position'))
+          %td= @employee.employee_position.name unless @employee.employee_position.nil?
+        %tr
+          %td
+            %strong= model_class.human_attribute_name(t('grade'))
+          %td= @employee.employee_grade.name unless @employee.employee_grade.nil?
+        %tr
+          %td
+            %strong= model_class.human_attribute_name(:job_title)
+          %td= @employee.job_title
+        %tr
+          %td
+            %strong= model_class.human_attribute_name(t('manager'))
+          %td= @employee.reporting_manager_id
+        %tr
+          %td
+            %strong= model_class.human_attribute_name(:gender)
+          %td=t("#{@gender.downcase}")
+        %tr
+          %td
+            %strong= model_class.human_attribute_name(:email)
+          %td= @employee.email
+        %tr
+          %td
+            %strong= model_class.human_attribute_name(:status)
+          %td=t("#{@status.downcase}")
+        %tr
+          %td
+            %strong= model_class.human_attribute_name(:qualification)
+          %td= @employee.qualification
+        %tr
+          %td
+            %strong= model_class.human_attribute_name(t('total_exp'))
+          %td= @total_years.to_s+" #{t('years')} "+@total_months.to_s+" #{t('months')}"
+        %tr
+          %td
+            %strong= model_class.human_attribute_name(t('exp_info'))
+          %td= @employee.experience_detail
+    -#    %tr
+    -#      %td
+    -#        %strong= model_class.human_attribute_name(:date_of_birth)
+    -#      %td= @employee.date_of_birth
+    -#    %tr
+    -#      %td
+    -#        %strong= model_class.human_attribute_name(:marital_status)
+    -#      %td= @employee.marital_status
+    -#    %tr
+    -#      %td
+    -#        %strong= model_class.human_attribute_name(:father_name)
+    -#      %td= @employee.father_name
+    -#    %tr
+    -#      %td
+    -#        %strong= model_class.human_attribute_name(:mother_name)
+    -#      %td= @employee.mother_name
+    -#    %tr
+    -#      %td
+    -#        %strong= model_class.human_attribute_name(:husband_name)
+    -#      %td= @employee.husband_name
+    -#    %tr
+    -#      %td
+    -#        %strong= model_class.human_attribute_name(:blood_group)
+    -#      %td= @employee.blood_group
+    -#    %tr
+    -#      %td
+    -#        %strong= model_class.human_attribute_name(:nationality_id)
+    -#      %td= @employee.nationality.name
+    -#    %tr
+    -#      %td
+    -#        %strong= model_class.human_attribute_name(:home_address_line_1)
+    -#      %td= @employee.home_address_line_1
+    -#    %tr
+    -#      %td
+    -#        %strong= model_class.human_attribute_name(:home_address_line2)
+    -#      %td= @employee.home_address_line2
+    -#    %tr
+    -#      %td
+    -#        %strong= model_class.human_attribute_name(:home_city)
+    -#      %td= @employee.home_city
+    -#    %tr
+    -#      %td
+    -#        %strong= model_class.human_attribute_name(:home_state)
+    -#      %td= @employee.home_state
+    -#    %tr
+    -#      %td
+    -#        %strong= model_class.human_attribute_name(:home_pin_code)
+    -#      %td= @employee.home_pin_code
+    -#    %tr
+    -#      %td
+    -#        %strong= model_class.human_attribute_name(:office_address_line1)
+    -#      %td= @employee.office_address_line1
+    -#    %tr
+    -#      %td
+    -#        %strong= model_class.human_attribute_name(:office_address_line2)
+    -#      %td= @employee.office_address_line2
+    -#    %tr
+    -#      %td
+    -#        %strong= model_class.human_attribute_name(:office_city)
+    -#      %td= @employee.office_city
+    -#    %tr
+    -#      %td
+    -#        %strong= model_class.human_attribute_name(:office_state)
+    -#      %td= @employee.office_state
+    -#    %tr
+    -#      %td
+    -#        %strong= model_class.human_attribute_name(:office_pin_code)
+    -#      %td= @employee.office_pin_code
+    -#    %tr
+    -#      %td
+    -#        %strong= model_class.human_attribute_name(:office_phone1)
+    -#      %td= @employee.office_phone1
+    -#    %tr
+    -#      %td
+    -#        %strong= model_class.human_attribute_name(:office_phone2)
+    -#      %td= @employee.office_phone2
+    -#    %tr
+    -#      %td
+    -#        %strong= model_class.human_attribute_name(:mobile_phone)
+    -#      %td= @employee.mobile_phone
+    -#    %tr
+    -#      %td
+    -#        %strong= model_class.human_attribute_name(:home_phone)
+    -#      %td= @employee.home_phone
+    -#    %tr
+    -#      %td
+    -#        %strong= model_class.human_attribute_name(:fax)
+    -#      %td= @employee.fax
+    .span2
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), employees_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_employee_path(@employee), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), employee_path(@employee), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+  = link_to "PDF Report", employee_path(@employee, format: "pdf")

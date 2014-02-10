@@ -1,0 +1,123 @@
+// Place all the styles related to the Employees controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.page-header {
+  margin-top: 0px;
+  height: 90px;
+  background: #fff url('/assets/header_underline.jpg') bottom no-repeat;
+  img {
+    margin: 0;
+    border: 0;
+    padding: 20px 0 0 15px;
+    float: left;
+  }
+  h1 {
+    margin: 0px;
+    padding: 25px 0 0 100px;
+    color: #999;
+    display: block;
+    font-size: 22px;
+    line-height: 27px;
+  }
+  h3 {
+    margin: 0px;
+    padding: 0 0 0 100px;
+    color: #b00;
+    font-size: 17px;
+    line-height: 20px;
+  }
+}
+
+@mixin image-border($w,$h) {
+    width: $w;
+    height: $h;
+    div & {
+      width: $w;
+      height: $h;
+      border: 8px solid #EFEFD1;
+      margin-bottom: 10px;
+    }
+}
+
+.employee_image {
+ @include image-border(125,125);
+}
+
+.school_logo {
+  @include image-border(150,110);
+}
+
+h5.color-red {
+  color: red;
+}
+
+p.flash-msg {
+  background-color: #fff1ab;
+  padding: 5px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid #EFDC86;
+}
+
+.controls {
+  label.inline {
+    padding-left: 0px;
+  }
+  #employee_experience_year,#employee_experience_month {
+    width: 110px ;
+  }
+  input[type=radio] {
+      width: 20px;
+      height: 28px;
+      margin: 2px 20px 0px 5px;
+  }
+  @mixin content-border {
+    line-height: 24px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border linear .2s, box-shadow linear .2s;
+    -moz-transition: border linear .2s, box-shadow linear .2s;
+    -o-transition: border linear .2s, box-shadow linear .2s;
+    transition: border linear .2s, box-shadow linear .2s;
+
+  }
+  input[type=file] {
+    width: 215px;
+    height: 28px;
+    @include content-border;
+    padding: 5px 0px 0px 5px;
+  }
+
+  &.grading-system-box{
+    width: 210px;
+    @include content-border;
+    padding: 4px 0px 4px 10px;
+    .each_batch {
+      border-top: 1px solid #DDDDDD;
+      //margin-bottom: 2px;
+      width: 197px;
+    }
+
+  }
+}
+.control-group {
+  .error {
+    input {
+      color: #b94a48;
+      border-color: #b94a48;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+      -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    }
+    label {
+      color: #b94a48;
+    }
+  }
+}

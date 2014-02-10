@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  priority: 
+  status: false
+  max_hours_day: 
+  max_hours_week: 
+
+two:
+  name: MyString
+  priority: 
+  status: false
+  max_hours_day: 
+  max_hours_week: 

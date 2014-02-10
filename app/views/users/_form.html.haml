@@ -1,0 +1,32 @@
+= form_for @user, :html => { :class => 'form-horizontal' } do |f|
+  .control-group
+    = f.label :username, :class => 'control-label'
+    .controls
+      = f.text_field :username, :class => 'text_field'
+  .control-group
+    = f.label :first_name, :class => 'control-label'
+    .controls
+      = f.text_field :first_name, :class => 'text_field'
+  .control-group
+    = f.label :last_name, :class => 'control-label'
+    .controls
+      = f.text_field :last_name, :class => 'text_field'
+  .control-group
+    = f.label :admin, :class => 'control-label'
+    .controls
+      = f.check_box :admin, :class => 'check_box'
+  .control-group
+    = f.label :student, :class => 'control-label'
+    .controls
+      = f.check_box :student, :class => 'check_box'
+  .control-group
+    = f.label :employee, :class => 'control-label'
+    .controls
+      = f.check_box :employee, :class => 'check_box'
+  .control-group
+    = f.label :parent, :class => 'control-label'
+    .controls
+      = f.check_box :parent, :class => 'check_box'
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), users_path, :class => 'btn'

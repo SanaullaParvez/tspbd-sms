@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @time_zone.name
+%p
+  %b Code:
+  = @time_zone.code
+%p
+  %b Difference type:
+  = @time_zone.difference_type
+%p
+  %b Time difference:
+  = @time_zone.time_difference
+
+= link_to 'Edit', edit_time_zone_path(@time_zone)
+\|
+= link_to 'Back', time_zones_path

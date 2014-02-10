@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  employee_category: 
+  status: false
+
+two:
+  name: MyString
+  employee_category: 
+  status: false
